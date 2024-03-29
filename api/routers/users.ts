@@ -34,7 +34,7 @@ userRouter.post('/', imagesUpload.single('image'), async (req, res, next) => {
   }
 });
 
-userRouter.post('/sessions', auth, async (req: RequestWithUser, res, next) => {
+userRouter.post('/sessions', async (req, res, next) => {
   try {
     const user = await User.findOne({ email: req.body.email });
 
@@ -73,6 +73,7 @@ userRouter.post('/google', async (req, res, next) => {
     const email = payload['email'];
     const id = payload['sub']; //subject
     const displayName = payload['name'];
+    const image = payload['picture'];
 
     if (!email) {
       return res.status(400).send({ error: 'Email is not present' });
@@ -86,6 +87,7 @@ userRouter.post('/google', async (req, res, next) => {
         password: crypto.randomUUID(),
         googleID: id,
         displayName,
+        image,
       });
     }
 
