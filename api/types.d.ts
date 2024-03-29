@@ -12,6 +12,7 @@ export interface UserFields {
 
 interface UserMethods {
   checkPassword(password: string): Promise<boolean>;
+
   generateToken(): void;
 }
 
@@ -22,4 +23,17 @@ export interface UserMutation {
   password: string;
   displayName: string;
   image: string | null;
+}
+
+export interface CocktailMutation {
+  user: string;
+  title: string;
+  image: string | null;
+  recipe: string;
+  ingredients: Ingredient[];
+}
+
+export interface Ingredient {
+  title: string;
+  quantity: number;
 }
