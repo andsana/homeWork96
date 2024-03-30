@@ -13,6 +13,7 @@ import { useEffect } from 'react';
 const Cocktails = () => {
   const dispatch = useAppDispatch();
   const cocktails = useAppSelector(selectCocktails);
+  console.log(cocktails);
   const isLoadingCocktails = useAppSelector(selectCocktailsLoading);
   const isLoadingDelete = useAppSelector(selectDeleteLoading);
   const isLoadingPublish = useAppSelector(

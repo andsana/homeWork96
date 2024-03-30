@@ -14,6 +14,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import SaveIcon from '@mui/icons-material/Save';
 import { useAppSelector } from '../../../app/hooks';
 import { selectUser } from '../../users/usersSlice';
+import { Link } from 'react-router-dom';
 
 interface Props {
   title: string;
@@ -84,7 +85,9 @@ const Cocktail: React.FC<Props> = ({
               <span>{isPublished ? 'Unpublish' : 'Publish'}</span>
             </LoadingButton>
           )}
-          <Button size="small">Learn More</Button>
+          <Button size="small" component={Link} to={`/cocktails/${cocktailId}`}>
+            Learn More
+          </Button>
         </CardActions>
       </Card>
     </Grid>

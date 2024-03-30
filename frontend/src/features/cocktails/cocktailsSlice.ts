@@ -81,8 +81,10 @@ export const selectCocktails = (state: RootState) => state.cocktails.items;
 export const selectCocktail = (state: RootState) => state.cocktails.item;
 export const selectCocktailsLoading = (state: RootState) =>
   state.cocktails.fetchLoading;
-export const selectCocktailById = (state: RootState, cocktailId: string) =>
-  state.cocktails.items.find((cocktail) => cocktail._id === cocktailId);
+export const selectCocktailById = (
+  state: RootState,
+  cocktailId: string | undefined,
+) => state.cocktails.items.find((cocktail) => cocktail._id === cocktailId);
 export const selectDeleteLoading = (state: RootState) =>
   state.cocktails?.deleteCocktailLoading;
 
