@@ -38,3 +38,30 @@ export interface RegisterResponse {
   message: string;
   user: User;
 }
+
+export interface Cocktail {
+  _id: string;
+  user: string;
+  title: string;
+  image: string;
+  recipe: string;
+  isPublished: boolean;
+  ingredients: Ingredient[];
+}
+
+export interface Ingredient {
+  title: string;
+  quantity: number;
+}
+
+export interface CocktailMutation {
+  title: string;
+  image: File | string | null;
+  recipe: string;
+  ingredients: IngredientMutation[];
+}
+
+export interface IngredientMutation {
+  title: string;
+  quantity: number;
+}

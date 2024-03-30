@@ -114,4 +114,31 @@ cocktailsRouter.delete(
   },
 );
 
+cocktailsRouter.patch(
+  '/:id/togglePublished',
+  auth,
+  permit('admin'),
+  async (req, res, next) => {
+    try {
+      const cocktail = await Cocktail.findById(req.params.id);
+      if (!cocktail) {
+        return res.status(404).send({ message: 'Cocktail not found!' });
+      }
+
+      cocktail.isPublished = !cocktail.isPublished;
+      await cocktail.save();
+
+      res.send({
+        message: 'Publication status successfully updated.',
+        cocktail,
+      });
+    } catch (e) {
+      if (e instanceof mongoose.Error.ValidationError) {
+        return res.status(422).send(e);
+      }
+      next(e);
+    }
+  },
+);
+
 export default cocktailsRouter;

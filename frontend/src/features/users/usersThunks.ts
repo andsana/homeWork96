@@ -10,6 +10,7 @@ import axiosApi from '../../axiosApi';
 import { isAxiosError } from 'axios';
 import { RootState } from '../../app/store';
 import { unsetUser } from './usersSlice';
+import { fetchCocktails } from '../cocktails/cocktailsThunks';
 
 export const register = createAsyncThunk<
   RegisterResponse,
@@ -85,5 +86,6 @@ export const logout = createAsyncThunk<void, undefined, { state: RootState }>(
       headers: { Authorization: 'Bearer ' + token },
     });
     dispatch(unsetUser());
+    dispatch(fetchCocktails());
   },
 );

@@ -30,10 +30,11 @@ export interface CocktailMutation {
   title: string;
   image: string | null;
   recipe: string;
-  ingredients: Ingredient[];
+  ingredients: IngredientMutation[];
+  isPublished?: string;
 }
 
-export interface Ingredient {
+export interface IngredientMutation {
   title: string;
-  quantity: number;
+  quantity: string;
 }
